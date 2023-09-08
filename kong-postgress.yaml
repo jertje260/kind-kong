@@ -2041,6 +2041,10 @@ spec:
     port: 8080
     protocol: TCP
     targetPort: 8001
+  - name: admin-ssl
+    port: 8444
+    protocol: TCP
+    targetPort: 8444
   - name: proxy-ssl
     port: 443
     protocol: TCP

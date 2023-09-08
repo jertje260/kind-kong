@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "4d51c7f5-12cd-45b3-88a4-4d8f4c546fb3",
+		"name": "Kong",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1141826"
+	},
+	"item": [
+		{
+			"name": "Admin Api",
+			"item": [
+				{
+					"name": "Plugins",
+					"item": [
+						{
+							"name": "Get Enabled Plugins",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8444/plugins",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8444",
+									"path": [
+										"plugins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enable Auth Key plugin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "key-auth",
+											"type": "text"
+										},
+										{
+											"key": "instance_name",
+											"value": "key_auth__echo_service",
+											"type": "text"
+										},
+										{
+											"key": "config.key_names",
+											"value": "echo_service",
+											"type": "text"
+										},
+										{
+											"key": "config.hide_credentials",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "config.key_in_header",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "config.key_in_query",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "config.key_in_body",
+											"value": "false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:8444/services/:serviceName/plugins",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8444",
+									"path": [
+										"services",
+										":serviceName",
+										"plugins"
+									],
+									"variable": [
+										{
+											"key": "serviceName",
+											"value": "echo"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Consumers",
+			"item": [
+				{
+					"name": "Get Consumers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8444/consumers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8444",
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Keys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8444/key-auths",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8444",
+							"path": [
+								"key-auths"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Keys of consumer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8444/consumers/:user/key-auth",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8444",
+							"path": [
+								"consumers",
+								":user",
+								"key-auth"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "user123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Consumer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "user123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8444/consumers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8444",
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Key For consumer (new)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "https://localhost:8444/consumers/:user/key-auth",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8444",
+							"path": [
+								"consumers",
+								":user",
+								"key-auth"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "user123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a key",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8444/consumers/:user/key-auth/:keyid",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8444",
+							"path": [
+								"consumers",
+								":user",
+								"key-auth",
+								":keyid"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "user123"
+								},
+								{
+									"key": "keyid",
+									"value": "d4e35207-b5b0-4f4d-b2e6-9c0e0c974778"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import Key For consumer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\": \"my-existing-key\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8444/consumers/:user/key-auth",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8444",
+							"path": [
+								"consumers",
+								":user",
+								"key-auth"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test Requests",
+			"item": [
+				{
+					"name": "Test No Key",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsImtpZCI6InRlc3Rfa2V5X2lkIiwidHlwIjoiSldUIn0.eyJzdWIiOiIiLCJqdGkiOiIiLCJVc2VySWQiOiI3MjRiMDRiZi0wZGM1LTQxMzYtYjQ2ZS0xNWJkNWJhY2JmZTMiLCJuYmYiOjE2OTE0ODc5MzEsImV4cCI6MTY5MjY5NzUzMCwiaWF0IjoxNjkxNDg3OTMxLCJpc3MiOiJodHRwczovL3d3dy5uZXh0ZW5lcmd5Lm5sIiwiYXVkIjoiaHR0cHM6Ly9zbWFydGNoYXJnaW5nLmplZGxpeC5jb20ifQ.zGJyqqy7jTn7ogym7sHWAyh7mhx94WK9qUJPCNkZIOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://kong.example/echo",
+							"protocol": "http",
+							"host": [
+								"kong",
+								"example"
+							],
+							"path": [
+								"echo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test With Key",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsImtpZCI6InRlc3Rfa2V5X2lkIiwidHlwIjoiSldUIn0.eyJzdWIiOiIiLCJqdGkiOiIiLCJVc2VySWQiOiI3MjRiMDRiZi0wZGM1LTQxMzYtYjQ2ZS0xNWJkNWJhY2JmZTMiLCJuYmYiOjE2OTE0ODc5MzEsImV4cCI6MTY5MjY5NzUzMCwiaWF0IjoxNjkxNDg3OTMxLCJpc3MiOiJodHRwczovL3d3dy5uZXh0ZW5lcmd5Lm5sIiwiYXVkIjoiaHR0cHM6Ly9zbWFydGNoYXJnaW5nLmplZGxpeC5jb20ifQ.zGJyqqy7jTn7ogym7sHWAyh7mhx94WK9qUJPCNkZIOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "Lt6pWlzuHhZK9UHXOmJ2U7ZYqbmI6Q9b",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://kong.example/echo",
+							"protocol": "http",
+							"host": [
+								"kong",
+								"example"
+							],
+							"path": [
+								"echo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
